@@ -1,80 +1,65 @@
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f7f7fb;
-  text-align: center;
+const materias = document.querySelectorAll(".materia");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+/* ===== CARGAR PROGRESO ===== */
+const progresoGuardado = JSON.parse(localStorage.getItem("materiasCompletadas")) || [];
+
+materias.forEach(materia => {
+  const id = materia.dataset.id;
+  if (progresoGuardado.includes(id)) {
+    materia.classList.add("completada");
+  }
+});
+
+/* ===== PROGRESO ===== */
+function actualizarProgreso() {
+  const total = materias.length;
+  const completadas = document.querySelectorAll(".materia.completada").length;
+  const porcentaje = Math.round((completadas / total) * 100);
+
+  progressBar.style.width = porcentaje + "%";
+  progressText.textContent = `Progreso: ${porcentaje}%`;
 }
 
-.malla-horizontal {
-  display: flex;
-  gap: 30px;
-  margin: 40px;
-  overflow-x: auto;
-  padding-bottom: 20px;
+actualizarProgreso();
+
+/* ===== PRERREQUISITOS ===== */
+function desbloquearMaterias() {
+  const completadas = JSON.parse(localStorage.getItem("materiasCompletadas")) || [];
+
+  materias.forEach(materia => {
+    const reqs = materia.dataset.req;
+    if (!reqs) return;
+
+    const requisitos = reqs.split(",");
+    const cumplidos = requisitos.every(r => completadas.includes(r));
+
+    materia.classList.toggle("bloqueada", !cumplidos);
+  });
 }
 
-.nivel {
-  background: white;
-  padding: 18px;
-  border-radius: 18px;
-  min-width: 300px;
-  flex-shrink: 0;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-}
+desbloquearMaterias();
 
-.materia {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s;
-}
+/* ===== CLICK ===== */
+materias.forEach(materia => {
+  materia.addEventListener("click", () => {
+    if (materia.classList.contains("bloqueada")) return;
 
-.materia.completada {
-  text-decoration: line-through;
-  opacity: 0.45;
-}
+    materia.classList.toggle("completada");
 
-/* BLOQUEADAS */
-.materia.bloqueada {
-  opacity: 0.3;
-  pointer-events: none;
-  filter: grayscale(80%);
-}
+    const id = materia.dataset.id;
+    let progreso = JSON.parse(localStorage.getItem("materiasCompletadas")) || [];
 
-/* SEMESTRE ACTUAL */
-.materia.actual {
-  outline: 3px solid #60a5fa;
-  box-shadow: 0 0 12px rgba(96,165,250,0.6);
-  font-weight: bold;
-}
+    if (materia.classList.contains("completada")) {
+      if (!progreso.includes(id)) progreso.push(id);
+    } else {
+      progreso = progreso.filter(m => m !== id);
+    }
 
-/* COLORES PASTELES */
-.pastel-azul { background: #dbeafe; }
-.pastel-rosa { background: #fde2e4; }
-.pastel-verde { background: #e2f0cb; }
-.pastel-lila { background: #ede9fe; }
-.pastel-amarillo { background: #fff1c1; }
-.pastel-gris { background: #e5e7eb; }
+    localStorage.setItem("materiasCompletadas", JSON.stringify(progreso));
+    actualizarProgreso();
+    desbloquearMaterias();
+  });
+});
 
-/* PROGRESO */
-.progress-container {
-  width: 65%;
-  height: 18px;
-  background: #e5e7eb;
-  border-radius: 10px;
-  margin: 20px auto;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: #93c5fd;
-  border-radius: 10px;
-  transition: width 0.3s;
-}
-
-.nota {
-  font-size: 13px;
-  color: #555;
-}
