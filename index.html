@@ -2,47 +2,188 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Curricular Interactiva</title>
+  <title>Malla Administración de Empresas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Malla Curricular – Administración</h1>
-<p>Haz clic en una materia para ver detalles</p>
+<h1>Malla Curricular – Administración de Empresas</h1>
 
-<div class="malla">
+<!-- BARRA DE PROGRESO -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+<p id="progressText">Progreso: 0%</p>
+
+<!-- MALLA HORIZONTAL -->
+<div class="malla-horizontal">
+
+  <!-- ===== NIVEL 100 ===== -->
   <div class="nivel">
-    <h2>Nivel 100 - I</h2>
-    <button class="materia" data-info="Cálculo de una variable">
+    <h3>Nivel 100</h3>
+
+    <div class="materia pastel-azul actual" data-id="MATG1045">
       MATG1045<br>Cálculo de una variable
-    </button>
-    <button class="materia" data-info="Análisis y resolución de problemas">
-      INGD1033<br>Análisis y Resolución
-    </button>
+    </div>
+
+    <div class="materia pastel-azul" data-id="MATG1047" data-req="MATG1045">
+      MATG1047<br>Cálculo de varias variables
+    </div>
+
+    <div class="materia pastel-rosa actual" data-id="INGD1033">
+      INGD1033<br>Análisis y resolución de problemas
+    </div>
+
+    <div class="materia pastel-amarillo actual" data-id="ECOG2067">
+      ECOG2067<br>Introducción a la economía
+    </div>
+
+    <div class="materia pastel-lila" data-id="CAGG2022">
+      CAGG2022<br>Estudio de casos de ciencias sociales
+    </div>
+
+    <div class="materia pastel-verde" data-id="AUDG2034">
+      AUDG2034<br>Contabilidad financiera
+    </div>
+
+    <div class="materia pastel-gris" data-id="INGD1006">
+      INGD1006<br>Inglés I
+    </div>
+
+    <div class="materia pastel-gris" data-id="INGD1007" data-req="INGD1006">
+      INGD1007<br>Inglés II
+    </div>
   </div>
 
+  <!-- ===== NIVEL 200 ===== -->
   <div class="nivel">
-    <h2>Nivel 200 - I</h2>
-    <button class="materia" data-info="Estadística básica">
+    <h3>Nivel 200</h3>
+
+    <div class="materia pastel-azul" data-id="ESTG1036" data-req="MATG1045">
       ESTG1036<br>Estadística I
-    </button>
-    <button class="materia" data-info="Fundamentos de programación">
-      CCPG1043<br>Fund. Programación
-    </button>
+    </div>
+
+    <div class="materia pastel-azul" data-id="ESTG1037" data-req="ESTG1036">
+      ESTG1037<br>Estadística II
+    </div>
+
+    <div class="materia pastel-lila" data-id="CCPG1043">
+      CCPG1043<br>Fundamentos de programación
+    </div>
+
+    <div class="materia pastel-rosa" data-id="CAGG2023">
+      CAGG2023<br>Sociología
+    </div>
+
+    <div class="materia pastel-amarillo" data-id="ADMG2029">
+      ADMG2029<br>Fundamentos de administración
+    </div>
+
+    <div class="materia pastel-verde" data-id="ADMG2034">
+      ADMG2034<br>Gestión de recursos humanos
+    </div>
+
+    <div class="materia pastel-verde" data-id="ECOG2042" data-req="AUDG2034">
+      ECOG2042<br>Análisis financiero
+    </div>
+
+    <div class="materia pastel-gris" data-id="INGD1008" data-req="INGD1007">
+      INGD1008<br>Inglés III
+    </div>
+
+    <div class="materia pastel-gris" data-id="INGD1009" data-req="INGD1008">
+      INGD1009<br>Inglés IV
+    </div>
   </div>
 
+  <!-- ===== NIVEL 300 ===== -->
   <div class="nivel">
-    <h2>Nivel 300 - I</h2>
-    <button class="materia" data-info="Administración de operaciones">
-      ADMG2022<br>Adm. Operaciones
-    </button>
+    <h3>Nivel 300</h3>
+
+    <div class="materia pastel-verde" data-id="ADMG1005">
+      ADMG1005<br>Emprendimiento e innovación
+    </div>
+
+    <div class="materia pastel-rosa" data-id="ADMG2030">
+      ADMG2030<br>Fundamentos de marketing
+    </div>
+
+    <div class="materia pastel-rosa" data-id="ADMG2035" data-req="ADMG2030">
+      ADMG2035<br>Investigación de mercados
+    </div>
+
+    <div class="materia pastel-lila" data-id="CCPG1054">
+      CCPG1054<br>Sistemas de información
+    </div>
+
+    <div class="materia pastel-amarillo" data-id="ADMG2022">
+      ADMG2022<br>Administración de operaciones
+    </div>
+
+    <div class="materia pastel-verde" data-id="ECOG2055" data-req="ECOG2042">
+      ECOG2055<br>Fundamentos de inversiones
+    </div>
+
+    <div class="materia pastel-amarillo" data-id="ECOG2065">
+      ECOG2065<br>Gestión tributaria
+    </div>
+
+    <div class="materia pastel-lila" data-id="JURG2005">
+      JURG2005<br>Derecho societario y laboral
+    </div>
+
+    <div class="materia pastel-gris" data-id="INGD1010" data-req="INGD1009">
+      INGD1010<br>Inglés V
+    </div>
+
+    <div class="materia pastel-azul" data-id="BDG1026">
+      BDG1026<br>Ciencia de la sostenibilidad
+    </div>
   </div>
+
+  <!-- ===== NIVEL 400 ===== -->
+  <div class="nivel">
+    <h3>Nivel 400</h3>
+
+    <div class="materia pastel-rosa" data-id="ADMG2028" data-req="ADMG2029">
+      ADMG2028<br>Estrategias corporativas
+    </div>
+
+    <div class="materia pastel-lila" data-id="INGD1060">
+      INGD1060<br>Administración logística
+    </div>
+
+    <div class="materia pastel-amarillo" data-id="ADMG2024">
+      ADMG2024<br>Comercio exterior
+    </div>
+
+    <div class="materia pastel-verde" data-id="ECOG2066" data-req="ECOG2042">
+      ECOG2066<br>Planificación y control financiero
+    </div>
+
+    <div class="materia pastel-rosa actual" data-id="ADMG2037" data-req="ADMG2022">
+      ADMG2037<br>Gestión de proyectos
+    </div>
+
+    <div class="materia pastel-rosa" data-id="ADMG2036">
+      ADMG2036<br>Planificación estratégica
+    </div>
+
+    <div class="materia pastel-azul" data-id="ADMG3031">
+      ADMG3031<br>Materia integradora de administración
+    </div>
+
+    <div class="materia pastel-verde" data-id="PRACTICAS">
+      Prácticas preprofesionales empresariales
+    </div>
+  </div>
+
 </div>
 
-<div id="info" class="info">
-  <h3>Información de la materia</h3>
-  <p id="detalle">Selecciona una materia</p>
-</div>
+<p class="nota">
+  🖱️ Clic en una materia para marcarla como completada<br>
+  🔒 Las materias bloqueadas se habilitan al cumplir prerrequisitos
+</p>
 
 <script src="script.js"></script>
 </body>
