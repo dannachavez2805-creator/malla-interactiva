@@ -1,39 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Malla Curricular Interactiva</title>
-  <style>
-    body { font-family: Arial; background:#f4f4f4; padding:20px; }
-    h1 { text-align:center; }
-    .materia {
-      background:white;
-      padding:10px;
-      margin:10px;
-      border-radius:8px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-    .materia:hover {
-      background:#cce5ff;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Malla App - Administración ESPOL</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+}
+.progress-container {
+  width: 100%;
+  background: #ddd;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+.progress-bar {
+  height: 25px;
+  background: #4caf50;
+  width: 0%;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  line-height: 25px;
+}
+.semestre {
+  margin-bottom: 25px;
+}
+.semestre h2 {
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+}
+.materia {
+  background: white;
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.materia.aprobada {
+  background: #a5f3b6;
+  text-decoration: line-through;
+}
+.s1 {background:#4caf50;}
+.s2 {background:#2196f3;}
+.s3 {background:#9c27b0;}
+.s4 {background:#ff9800;}
+.s5 {background:#f44336;}
+.s6 {background:#009688;}
+.s7 {background:#3f51b5;}
+.s8 {background:#795548;}
+</style>
 </head>
 <body>
 
-<h1>📘 Mi Malla Curricular Interactiva</h1>
+<h1>📘 Malla App Administración de Empresas - ESPOL</h1>
 
-<div class="materia" onclick="alert('Matemáticas Básicas aprobada')">
-  Matemáticas Básicas
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar">0%</div>
 </div>
 
-<div class="materia" onclick="alert('Contabilidad I')">
-  Contabilidad I
+<div id="malla">
+
+<div class="semestre">
+<h2 class="s1">Semestre 1</h2>
+<div class="materia">Matemáticas Básicas</div>
+<div class="materia">Contabilidad I</div>
+<div class="materia">Introducción a la Administración</div>
+<div class="materia">Comunicación Oral y Escrita</div>
 </div>
 
-<div class="materia" onclick="alert('Economía')">
-  Economía
+<div class="semestre">
+<h2 class="s2">Semestre 2</h2>
+<div class="materia">Cálculo</div>
+<div class="materia">Contabilidad II</div>
+<div class="materia">Microeconomía</div>
+<div class="materia">Estadística I</div>
 </div>
+
+<div class="semestre">
+<h2 class="s3">Semestre 3</h2>
+<div class="materia">Macroeconomía</div>
+<div class="materia">Estadística II</div>
+<div class="materia">Costos</div>
+<div class="materia">Derecho Empresarial</div>
+</div>
+
+<div class="semestre">
+<h2 class="s4">Semestre 4</h2>
+<div class="materia">Finanzas I</div>
+<div class="materia">Investigación de Mercados</div>
+<div class="materia">Gestión del Talento Humano</div>
+<div class="materia">Métodos Cuantitativos</div>
+</div>
+
+<div class="semestre">
+<h2 class="s5">Semestre 5</h2>
+<div class="materia">Finanzas II</div>
+<div class="materia">Marketing</div>
+<div class="materia">Logística</div>
+<div class="materia">Emprendimiento</div>
+</div>
+
+<div class="semestre">
+<h2 class="s6">Semestre 6</h2>
+<div class="materia">Gestión Estratégica</div>
+<div class="materia">Auditoría</div>
+<div class="materia">Comercio Exterior</div>
+<div class="materia">Sistemas de Información</div>
+</div>
+
+<div class="semestre">
+<h2 class="s7">Semestre 7</h2>
+<div class="materia">Planeación Estratégica</div>
+<div class="materia">Gestión de Proyectos</div>
+<div class="materia">Electiva I</div>
+</div>
+
+<div class="semestre">
+<h2 class="s8">Semestre 8</h2>
+<div class="materia">Ética Profesional</div>
+<div class="materia">Electiva II</div>
+<div class="materia">Trabajo de Titulación</div>
+</div>
+
+</div>
+
+<script>
+const materias = document.querySelectorAll(".materia");
+
+materias.forEach((materia, index) => {
+  if(localStorage.getItem("materia"+index) === "true"){
+    materia.classList.add("aprobada");
+  }
+
+  materia.addEventListener("click", () => {
+    materia.classList.toggle("aprobada");
+    localStorage.setItem("materia"+index, materia.classList.contains("aprobada"));
+    actualizarProgreso();
+  });
+});
+
+function actualizarProgreso(){
+  const total = materias.length;
+  const aprobadas = document.querySelectorAll(".materia.aprobada").length;
+  const porcentaje = Math.round((aprobadas/total)*100);
+  const barra = document.getElementById("progressBar");
+  barra.style.width = porcentaje + "%";
+  barra.innerText = porcentaje + "%";
+}
+
+actualizarProgreso();
+</script>
 
 </body>
 </html>
