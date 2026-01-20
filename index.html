@@ -1,182 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Malla App Administración ESPOL</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f8f9fb;
-  padding: 20px;
-}
-h1 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-.progress-container {
-  width: 100%;
-  background: #e0e0e0;
-  border-radius: 20px;
-  margin: 20px 0;
-}
-.progress-bar {
-  height: 22px;
-  background: #a7c7e7;
-  width: 0%;
-  border-radius: 20px;
-  text-align: center;
-  color: #333;
-  line-height: 22px;
-  font-size: 14px;
-}
-.malla {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-}
-.semestre {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 10px;
-  min-width: 200px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-.semestre h2 {
-  text-align: center;
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-.materia {
-  background: #f1f3f6;
-  padding: 6px;
-  margin: 6px 0;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s;
-}
-.materia:hover {
-  background: #e3e9f0;
-}
-.materia.aprobada {
-  background: #c7eed8;
-  text-decoration: line-through;
-}
-
-/* Colores pastel por semestre */
-.s1 {background:#ffd6d6;}
-.s2 {background:#d6eaff;}
-.s3 {background:#e6d6ff;}
-.s4 {background:#fff2cc;}
-.s5 {background:#ffd9ec;}
-.s6 {background:#d9f2f2;}
-.s7 {background:#e0e0ff;}
-.s8 {background:#f0e0d6;}
-</style>
+  <meta charset="UTF-8">
+  <title>Malla Curricular Interactiva</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>📘 Malla Interactiva Administración ESPOL</h1>
-
-<div class="progress-container">
-  <div class="progress-bar" id="progressBar">0%</div>
-</div>
+<h1>Malla Curricular – Administración</h1>
+<p>Haz clic en una materia para ver detalles</p>
 
 <div class="malla">
+  <div class="nivel">
+    <h2>Nivel 100 - I</h2>
+    <button class="materia" data-info="Cálculo de una variable">
+      MATG1045<br>Cálculo de una variable
+    </button>
+    <button class="materia" data-info="Análisis y resolución de problemas">
+      INGD1033<br>Análisis y Resolución
+    </button>
+  </div>
 
-<div class="semestre">
-<h2 class="s1">Sem 1</h2>
-<div class="materia">Matemáticas Básicas</div>
-<div class="materia">Contabilidad I</div>
-<div class="materia">Introducción a la Administración</div>
-<div class="materia">Comunicación Oral y Escrita</div>
+  <div class="nivel">
+    <h2>Nivel 200 - I</h2>
+    <button class="materia" data-info="Estadística básica">
+      ESTG1036<br>Estadística I
+    </button>
+    <button class="materia" data-info="Fundamentos de programación">
+      CCPG1043<br>Fund. Programación
+    </button>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 300 - I</h2>
+    <button class="materia" data-info="Administración de operaciones">
+      ADMG2022<br>Adm. Operaciones
+    </button>
+  </div>
 </div>
 
-<div class="semestre">
-<h2 class="s2">Sem 2</h2>
-<div class="materia">Cálculo</div>
-<div class="materia">Contabilidad II</div>
-<div class="materia">Microeconomía</div>
-<div class="materia">Estadística I</div>
+<div id="info" class="info">
+  <h3>Información de la materia</h3>
+  <p id="detalle">Selecciona una materia</p>
 </div>
 
-<div class="semestre">
-<h2 class="s3">Sem 3</h2>
-<div class="materia">Macroeconomía</div>
-<div class="materia">Estadística II</div>
-<div class="materia">Costos</div>
-<div class="materia">Derecho Empresarial</div>
-</div>
-
-<div class="semestre">
-<h2 class="s4">Sem 4</h2>
-<div class="materia">Finanzas I</div>
-<div class="materia">Investigación de Mercados</div>
-<div class="materia">Gestión del Talento Humano</div>
-<div class="materia">Métodos Cuantitativos</div>
-</div>
-
-<div class="semestre">
-<h2 class="s5">Sem 5</h2>
-<div class="materia">Finanzas II</div>
-<div class="materia">Marketing</div>
-<div class="materia">Logística</div>
-<div class="materia">Emprendimiento</div>
-</div>
-
-<div class="semestre">
-<h2 class="s6">Sem 6</h2>
-<div class="materia">Gestión Estratégica</div>
-<div class="materia">Auditoría</div>
-<div class="materia">Comercio Exterior</div>
-<div class="materia">Sistemas de Información</div>
-</div>
-
-<div class="semestre">
-<h2 class="s7">Sem 7</h2>
-<div class="materia">Planeación Estratégica</div>
-<div class="materia">Gestión de Proyectos</div>
-<div class="materia">Electiva I</div>
-</div>
-
-<div class="semestre">
-<h2 class="s8">Sem 8</h2>
-<div class="materia">Ética Profesional</div>
-<div class="materia">Electiva II</div>
-<div class="materia">Trabajo de Titulación</div>
-</div>
-
-</div>
-
-<script>
-const materias = document.querySelectorAll(".materia");
-
-materias.forEach((materia, index) => {
-  if(localStorage.getItem("materia"+index) === "true"){
-    materia.classList.add("aprobada");
-  }
-
-  materia.addEventListener("click", () => {
-    materia.classList.toggle("aprobada");
-    localStorage.setItem("materia"+index, materia.classList.contains("aprobada"));
-    actualizarProgreso();
-  });
-});
-
-function actualizarProgreso(){
-  const total = materias.length;
-  const aprobadas = document.querySelectorAll(".materia.aprobada").length;
-  const porcentaje = Math.round((aprobadas/total)*100);
-  const barra = document.getElementById("progressBar");
-  barra.style.width = porcentaje + "%";
-  barra.innerText = porcentaje + "%";
-}
-
-actualizarProgreso();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
