@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  text-align: center;
+}
+
+.malla {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.nivel {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  width: 220px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.materia {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ffd966;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.materia:hover {
+  background: #f4b400;
+}
+
+.info {
+  margin-top: 30px;
+  background: white;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
